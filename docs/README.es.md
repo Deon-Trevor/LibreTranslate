@@ -140,7 +140,7 @@ pip install libretranslate
 libretranslate [args]
 ```
 
-Luego abra un navegador web para <http://localhost:5000>
+Luego abra un navegador web para <http://localhost:5050>
 
 De forma predeterminada, LibreTranslate instalará compatibilidad con todos los idiomas disponibles. Para cargar solo ciertos idiomas y reducir el tiempo de inicio, puede usar el argumento **--load-only**:
 
@@ -193,45 +193,45 @@ Los argumentos que se pasan al proceso o se configuran mediante variables de ent
 ### Configuración / Indicadores
 
 
-| Argumento                     | Descripción                                                                                                 | Configuración predeterminada                    | Sobre nombre                      |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------ |
-| --debug                       | Habilitar entorno de depuración                                                                                    | `Desactivado`                         | LT_DEBUG                       |
-| --ssl                         | Si habilitar SSL                                                                                       | `Desactivado`                         | LT_SSL                         |
-| --api-keys                    | Habilitar la base de datos de claves API para los límites de velocidad por cliente cuando se alcanza --req-limit                             | `No utilice claves API`               | LT_API_KEYS                    |
+| Argumento                     | Descripción                                                                                                                            | Configuración predeterminada                    | Sobre nombre                   |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ------------------------------ |
+| --debug                       | Habilitar entorno de depuración                                                                                                        | `Desactivado`                                   | LT_DEBUG                       |
+| --ssl                         | Si habilitar SSL                                                                                                                       | `Desactivado`                                   | LT_SSL                         |
+| --api-keys                    | Habilitar la base de datos de claves API para los límites de velocidad por cliente cuando se alcanza --req-limit                       | `No utilice claves API`                         | LT_API_KEYS                    |
 | --require-api-key-origin      | Requerir el uso de una clave API para el acceso programático a la API, a menos que el origen de la solicitud coincida con este dominio | `Sin restricciones sobre el origen del dominio` | LT_REQUIRE_API_KEY_ORIGIN      |
-| --require-api-key-secret      | Requerir el uso de una clave API para el acceso programático a la API, a menos que el cliente también envíe una coincidencia secreta   | `No se requieren secretos`    | LT_REQUIRE_API_KEY_SECRET      |
-| --require-api-key-fingerprint | Requerir el uso de una clave API para el acceso programático a la API, a menos que el cliente también coincida con una huella digital  | `No se requieren huellas digitales`       | LT_REQUIRE_API_KEY_FINGERPRINT |
-| --under-attack                | Habilitar el modo bajo ataque. Cuando está habilitado, las solicitudes deben realizarse con una clave API.      | `Desactivado`                         | LT_UNDER_ATTACK                |
-| --suggestions                 | Permitir sugerencias de usuarios                                                                                    | `Desactivado`                         | LT_SUGGESTIONS                 |
-| --disable-files-translation   | Deshabilitar la traducción de archivos                                                                                   | `Se permite la traducción de archivos`         | LT_DISABLE_FILES_TRANSLATION   |
-| --disable-web-ui              | Deshabilitar la interfaz web                                                                                              | `Interfaz de usuario web habilitada`                   | LT_DISABLE_WEB_UI              |
-| --update-models               | Actualizar los modelos de lenguaje al inicio                                                                           | `Solo se activa si no se encuentran modelos`       | LT_UPDATE_MODELS               |
-| --metrics                     | Habilitar el punto final /metrics para exportar [Prometheus](https://prometheus.io/) métricas de uso               | `Desactivado`                         | LT_METRICS                     |
+| --require-api-key-secret      | Requerir el uso de una clave API para el acceso programático a la API, a menos que el cliente también envíe una coincidencia secreta   | `No se requieren secretos`                      | LT_REQUIRE_API_KEY_SECRET      |
+| --require-api-key-fingerprint | Requerir el uso de una clave API para el acceso programático a la API, a menos que el cliente también coincida con una huella digital  | `No se requieren huellas digitales`             | LT_REQUIRE_API_KEY_FINGERPRINT |
+| --under-attack                | Habilitar el modo bajo ataque. Cuando está habilitado, las solicitudes deben realizarse con una clave API.                             | `Desactivado`                                   | LT_UNDER_ATTACK                |
+| --suggestions                 | Permitir sugerencias de usuarios                                                                                                       | `Desactivado`                                   | LT_SUGGESTIONS                 |
+| --disable-files-translation   | Deshabilitar la traducción de archivos                                                                                                 | `Se permite la traducción de archivos`          | LT_DISABLE_FILES_TRANSLATION   |
+| --disable-web-ui              | Deshabilitar la interfaz web                                                                                                           | `Interfaz de usuario web habilitada`            | LT_DISABLE_WEB_UI              |
+| --update-models               | Actualizar los modelos de lenguaje al inicio                                                                                           | `Solo se activa si no se encuentran modelos`    | LT_UPDATE_MODELS               |
+| --metrics                     | Habilitar el punto final /metrics para exportar [Prometheus](https://prometheus.io/) métricas de uso                                   | `Desactivado`                                   | LT_METRICS                     |
 
 ### Parámetros de configuración
 
-| Argumento                   | Descripción                                                                                                                                                                                                 | Parámetro predeterminado                     | Sobre nombre                   |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------------- |
-| --host                     | Establecer el host para vincular el servidor to                                                                                                                                                                              | `127.0.0.1`                           | LT_HOST                     |
-| --port                     | Establecer el puerto al que se vinculará el servidor                                                                                                                                                                              | `5000`                                | LT_PORT                     |
-| --char-limit               | Establecer límite de caracteres                                                                                                                                                                                         | `Sin Limite`                            | LT_CHAR_LIMIT               |
-| --req-limit                | Establecer el número máximo de solicitudes por minuto por cliente (fuera de los límites establecidos por las claves API)                                                                                                                   | `Sin Limite`                            | LT_REQ_LIMIT                |
-| --req-limit-storage        | URI de almacenamiento para limitar el almacenamiento de datos de solicitudes. Ver [Flask Limiter](https://flask-limiter.readthedocs.io/en/stable/configuration.html)                                                                   | `memoria://`                           | LT_REQ_LIMIT_STORAGE        |
-| --req-time-cost            | Considera el coste de tiempo (en segundos) para limitar las solicitudes. Si una solicitud tarda 10 segundos y este valor se establece en 5, el coste de la solicitud es 2 o el coste real de la solicitud (el que sea mayor). | `Sin costo de tiempo`                        | LT_REQ_TIME_COST            |
-| --batch-limit              | Establecer el número máximo de textos a traducir en una solicitud por lotes                                                                                                                                                 | `Sin Limite`                            | LT_BATCH_LIMIT              |
-| --ga-id                    | Habilite Google Analytics en la página del cliente API proporcionando una identificación                                                                                                                                          | `Vacío (sin seguimiento)`                 | LT_GA_ID                    |
-| --frontend-language-source | Establecer el idioma predeterminado del frontend - fuente                                                                                                                                                                      | `auto`                                | LT_FRONTEND_LANGUAGE_SOURCE |
-| --frontend-language-target | Establecer el idioma predeterminado del frontend - objetivo                                                                                                                                                                      | `locale` (coincide con la configuración regional del sitio)        | LT_FRONTEND_LANGUAGE_TARGET |
-| --frontend-timeout         | Establecer el tiempo de espera de traducción del frontend                                                                                                                                                                            | `500`                                 | LT_FRONTEND_TIMEOUT         |
-| --api-keys-db-path         | Utilice una ruta específica dentro del contenedor para la base de datos local. Puede ser absoluta o relativa.                                                                                                                | `db/api_keys.db`                      | LT_API_KEYS_DB_PATH         |
-| --api-keys-remote          | Utilice este punto final remoto para consultar claves API válidas en lugar de utilizar la base de datos local                                                                                                                    | `Vacío (usa db local en su lugar)`        | LT_API_KEYS_REMOTE          |
-| --get-api-key-link         | Mostrar un enlace en la interfaz de usuario donde dirigir a los usuarios para obtener una clave API                                                                                                                                              | `Vacío (no se muestra ningún enlace en la interfaz web)`     | LT_GET_API_KEY_LINK         |
-| --shared-storage           | URI de almacenamiento compartido que se utilizará para compartir datos entre múltiples procesos (por ejemplo, al usar gunicorn)                                                                                                                         | `memoria://`                           | LT_SHARED_STORAGE           |
-| --secondary                | Marque esta instancia como una instancia secundaria para evitar conflictos con el nodo principal en configuraciones de múltiples nodos                                                                                                    | `Nodo primario`                        | LT_SECONDARY                |
-| --load-only                | Establecer idiomas disponibles                                                                                                                                                                                     | `Vacío (utilizar todo de argostranslate)` | LT_LOAD_ONLY                |
-| --threads                  | Establecer número de subprocesos                                                                                                                                                                                       | `4`                                   | LT_THREADS                  |
-| --metrics-auth-token       | Proteja el punto final /metrics permitiendo solo clientes que tengan un token de portador de autorización válido                                                                                                         | `Vacío (no se requiere autenticación)`            | LT_METRICS_AUTH_TOKEN       |
-| --url-prefix               | Agregar prefijo a la URL: ejemplo.com:5000/prefijo-url/                                                                                                                                                             | `/`                                   | LT_URL_PREFIX               |
+| Argumento                  | Descripción                                                                                                                                                                                                                   | Parámetro predeterminado                                    | Sobre nombre                |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | --------------------------- |
+| --host                     | Establecer el host para vincular el servidor to                                                                                                                                                                               | `127.0.0.1`                                                 | LT_HOST                     |
+| --port                     | Establecer el puerto al que se vinculará el servidor                                                                                                                                                                          | `5050`                                                      | LT_PORT                     |
+| --char-limit               | Establecer límite de caracteres                                                                                                                                                                                               | `Sin Limite`                                                | LT_CHAR_LIMIT               |
+| --req-limit                | Establecer el número máximo de solicitudes por minuto por cliente (fuera de los límites establecidos por las claves API)                                                                                                      | `Sin Limite`                                                | LT_REQ_LIMIT                |
+| --req-limit-storage        | URI de almacenamiento para limitar el almacenamiento de datos de solicitudes. Ver [Flask Limiter](https://flask-limiter.readthedocs.io/en/stable/configuration.html)                                                          | `memoria://`                                                | LT_REQ_LIMIT_STORAGE        |
+| --req-time-cost            | Considera el coste de tiempo (en segundos) para limitar las solicitudes. Si una solicitud tarda 10 segundos y este valor se establece en 5, el coste de la solicitud es 2 o el coste real de la solicitud (el que sea mayor). | `Sin costo de tiempo`                                       | LT_REQ_TIME_COST            |
+| --batch-limit              | Establecer el número máximo de textos a traducir en una solicitud por lotes                                                                                                                                                   | `Sin Limite`                                                | LT_BATCH_LIMIT              |
+| --ga-id                    | Habilite Google Analytics en la página del cliente API proporcionando una identificación                                                                                                                                      | `Vacío (sin seguimiento)`                                   | LT_GA_ID                    |
+| --frontend-language-source | Establecer el idioma predeterminado del frontend - fuente                                                                                                                                                                     | `auto`                                                      | LT_FRONTEND_LANGUAGE_SOURCE |
+| --frontend-language-target | Establecer el idioma predeterminado del frontend - objetivo                                                                                                                                                                   | `locale` (coincide con la configuración regional del sitio) | LT_FRONTEND_LANGUAGE_TARGET |
+| --frontend-timeout         | Establecer el tiempo de espera de traducción del frontend                                                                                                                                                                     | `500`                                                       | LT_FRONTEND_TIMEOUT         |
+| --api-keys-db-path         | Utilice una ruta específica dentro del contenedor para la base de datos local. Puede ser absoluta o relativa.                                                                                                                 | `db/api_keys.db`                                            | LT_API_KEYS_DB_PATH         |
+| --api-keys-remote          | Utilice este punto final remoto para consultar claves API válidas en lugar de utilizar la base de datos local                                                                                                                 | `Vacío (usa db local en su lugar)`                          | LT_API_KEYS_REMOTE          |
+| --get-api-key-link         | Mostrar un enlace en la interfaz de usuario donde dirigir a los usuarios para obtener una clave API                                                                                                                           | `Vacío (no se muestra ningún enlace en la interfaz web)`    | LT_GET_API_KEY_LINK         |
+| --shared-storage           | URI de almacenamiento compartido que se utilizará para compartir datos entre múltiples procesos (por ejemplo, al usar gunicorn)                                                                                               | `memoria://`                                                | LT_SHARED_STORAGE           |
+| --secondary                | Marque esta instancia como una instancia secundaria para evitar conflictos con el nodo principal en configuraciones de múltiples nodos                                                                                        | `Nodo primario`                                             | LT_SECONDARY                |
+| --load-only                | Establecer idiomas disponibles                                                                                                                                                                                                | `Vacío (utilizar todo de argostranslate)`                   | LT_LOAD_ONLY                |
+| --threads                  | Establecer número de subprocesos                                                                                                                                                                                              | `4`                                                         | LT_THREADS                  |
+| --metrics-auth-token       | Proteja el punto final /metrics permitiendo solo clientes que tengan un token de portador de autorización válido                                                                                                              | `Vacío (no se requiere autenticación)`                      | LT_METRICS_AUTH_TOKEN       |
+| --url-prefix               | Agregar prefijo a la URL: ejemplo.com:5050/prefijo-url/                                                                                                                                                                       | `/`                                                         | LT_URL_PREFIX               |
 
 ### Notas:
 
@@ -263,13 +263,13 @@ También puede ejecutar el script `scripts/install_models.py`.
 
 ```bash
 pip install gunicorn
-gunicorn --bind 0.0.0.0:5000 'wsgi:app'
+gunicorn --bind 0.0.0.0:5050 'wsgi:app'
 ```
 
 Puedes pasar los argumentos de la aplicación directamente a Gunicorn mediante:
 
 ```bash
-gunicorn --bind 0.0.0.0:5000 'wsgi:app(api_keys=True)'
+gunicorn --bind 0.0.0.0:5050 'wsgi:app(api_keys=True)'
 ```
 
 ## Implementación de Kubernetes
@@ -306,10 +306,10 @@ Para emitir una nueva clave API con un límite de 120 solicitudes por minuto:
 ltmanage keys add 120
 ```
 
-Para emitir una nueva clave API con 120 solicitudes por minuto y un máximo de 5000 caracteres por solicitud:
+Para emitir una nueva clave API con 120 solicitudes por minuto y un máximo de 5050 caracteres por solicitud:
 
 ```bash
-ltmanage keys add 120 --char-limit 5000
+ltmanage keys add 120 --char-limit 5050
 ```
 
 Si cambió la ruta de la base de datos de claves API:
@@ -334,7 +334,7 @@ ltmanage keys
 
 LibreTranslate tiene Prometheus Capacidades de [exportador](https://prometheus.io/docs/instrumenting/exporters/) cuando pasa el argumento `--metrics` al inicio (deshabilitado de manera predeterminada). Cuando las métricas están habilitadas, se monta un punto final `/metrics` en la instancia:
 
-<http://localhost:5000/metrics>
+<http://localhost:5050/metrics>
 
 ```promql
 # HELP libretranslate_http_requests_in_flight Métrica multiproceso
@@ -357,7 +357,7 @@ scrape_configs:
 #credentials: "mytoken"
 
 static_configs:
-- targets: ["localhost:5000"]
+- targets: ["localhost:5050"]
 ```
 
 Para proteger el endpoint `/metrics`, también puedes usar `--metrics-auth-token mytoken`.
@@ -368,7 +368,7 @@ Si usa Gunicorn, asegúrese de crear un directorio para almacenar las métricas 
 mkdir -p /tmp/prometheus_data
 rm /tmp/prometheus_data/*
 export PROMETHEUS_MULTIPROC_DIR=/tmp/prometheus_data
-gunicorn -c scripts/gunicorn_conf.py --bind 0.0.0.0:5000 'wsgi:app(metrics=True)'
+gunicorn -c scripts/gunicorn_conf.py --bind 0.0.0.0:5050 'wsgi:app(metrics=True)'
 ```
 
 ## Enlaces de lenguaje
@@ -407,11 +407,11 @@ Véalo en acción en esta [página](https://community.libretranslate.com/t/have-
 Esta es una lista de instancias públicas de LibreTranslate; algunas requieren una clave API. Si desea agregar una nueva URL, abra una solicitud de extracción.
 
 
-| URL                                                         | Se requiere clave API   | Enlaces                                                                                                        |
-| ----------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| [libretranslate.com](https://libretranslate.com)            | :heavy_check_mark: | [ [Get API Key](https://portal.libretranslate.com) ] [ [Service Status](https://status.libretranslate.com/) ] |
-| [translate.flossboxin.org.in](https://translate.flossboxin.org.in/) |  | [ [Contact/eMail](mailto:dev@flossboxin.org.in) ] |
-| [lt.blitzw.in](https://lt.blitzw.in/) |  |  |
+| URL                                                                 | Se requiere clave API | Enlaces                                                                                                       |
+| ------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [libretranslate.com](https://libretranslate.com)                    | :heavy_check_mark:    | [ [Get API Key](https://portal.libretranslate.com) ] [ [Service Status](https://status.libretranslate.com/) ] |
+| [translate.flossboxin.org.in](https://translate.flossboxin.org.in/) |                       | [ [Contact/eMail](mailto:dev@flossboxin.org.in) ]                                                             |
+| [lt.blitzw.in](https://lt.blitzw.in/)                               |                       |                                                                                                               |
 
 ## TOR/i2p Espejos
 
@@ -446,7 +446,7 @@ Para ayudar a mejorar o revisar las traducciones de la interfaz de usuario:
 ```
 
 
-| Idioma              | Revisado           | Enlace de Pizarra web                                                              |
+| Idioma                | Revisado           | Enlace de Pizarra web                                                    |
 | --------------------- | ------------------ | ------------------------------------------------------------------------ |
 | Arabic                |                    | [Edit](https://hosted.weblate.org/translate/libretranslate/app/ar/)      |
 | Azerbaijani           |                    | [Edit](https://hosted.weblate.org/translate/libretranslate/app/az/)      |
@@ -511,10 +511,10 @@ En `$HOME/.local/share/argos-translate/packages`. En Windows, es `C:\Users\youru
 Sí, aquí hay ejemplos de configuración para Apache2 y Caddy que redirigen un subdominio (con certificado HTTPS) a LibreTranslate ejecutándose en un contenedor en el host local.
 
 ```bash
-sudo docker run -ti --rm -p 127.0.0.1:5000:5000 libretranslate/libretranslate
+sudo docker run -ti --rm -p 127.0.0.1:5050:5050 libretranslate/libretranslate
 ```
 
-Puede eliminar `127.0.0.1` del comando anterior si desea acceder a él desde `domain.tld:5000`, además de `subdomain.domain.tld` (esto puede ser útil para determinar si hay un problema con Apache 2 o el contenedor de Docker).
+Puede eliminar `127.0.0.1` del comando anterior si desea acceder a él desde `domain.tld:5050`, además de `subdomain.domain.tld` (esto puede ser útil para determinar si hay un problema con Apache 2 o el contenedor de Docker).
 
 Agregue `--restart unless-stopped` si desea que este contenedor se inicie al arrancar, a menos que se detenga manualmente.
 
@@ -541,8 +541,8 @@ Redirigir / https://[SU_DOMINIO]
 <HostVirtual *:443>
 NombreDeServidor https://[SU_DOMINIO]
 
-PassProxy / http://127.0.0.1:5000/
-PassReverseProxy / http://127.0.0.1:5000/
+PassProxy / http://127.0.0.1:5050/
+PassReverseProxy / http://127.0.0.1:5050/
 ProxyPreserveHost Activado
 
 SSLEngine Activado
@@ -570,7 +570,7 @@ Reemplace [SU_DOMINIO] con su dominio completo; por ejemplo, `translate.domain.t
 ```Caddyfile
 #Libretranslate
 [SU_DOMINIO] {
-reverse_proxy localhost:5000
+reverse_proxy localhost:5050
 }
 ```
 
@@ -649,7 +649,7 @@ servidor {
 
 
   location / {
-      proxy_pass http://127.0.0.1:5000/;
+      proxy_pass http://127.0.0.1:5050/;
       proxy_set_header Host $http_host;
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

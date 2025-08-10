@@ -73,6 +73,6 @@ EOPython
 EOF
 
 EXPOSE 22
-EXPOSE 5000
+EXPOSE 5050
 
 ENTRYPOINT [ "./venv/bin/libretranslate", "--host", "*" ]
