@@ -1,3 +1,3 @@
 import os
 
-os.system("sh run.sh --port 5050")
+os.system("bash run.sh --port 5050")
