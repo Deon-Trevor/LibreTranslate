@@ -44,33 +44,6 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# $1 = command | $2 = help_text | $3 = install_command (optional)
-check_command(){
-  local not_found=
-  if ! hash "$1" 2>/dev/null; then
-    not_found=1
-    if [[ -n "${3:-}" ]]; then
-      echo -e "Checking for $1... \033[93mnot found, attempting install\033[39m"
-      $3 || sudo $3
-      check_command "$1" "$2"          # re-check (no installer this time)
-      return
-    fi
-  fi
-
-  if [[ -n "${not_found:-}" ]]; then
-    echo -e "Checking for $1... \033[91mcan't find $1!\033[39m $2"
-    return 1
-  else
-    echo -e "Checking for $1... \033[92mfound\033[39m"
-  fi
-}
-
-environment_check(){
-  check_command "docker" "https://www.docker.com/"
-}
-
-environment_check
-
 # Detect TTY and set docker flags accordingly
 DOCKER_FLAGS=(--rm -p "${LT_PORT}:${LT_PORT}")
 [[ -n "${DB_VOLUME}" ]] && DOCKER_FLAGS+=(${DB_VOLUME})
