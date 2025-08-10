@@ -22,7 +22,7 @@ usage(){
   exit
 }
 
-export LT_PORT=5000
+export LT_PORT=5050
 
 # Parse args for overrides
 ARGS=()
