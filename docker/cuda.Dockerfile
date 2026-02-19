@@ -55,5 +55,5 @@ RUN if [ "$with_models" = "true" ]; then  \
 # See: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions
 # ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64
 
-EXPOSE 5000
+EXPOSE 5050
 ENTRYPOINT [ "libretranslate", "--host", "*" ]

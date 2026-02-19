@@ -5,7 +5,7 @@ import sys
 if os.path.isfile('/tmp/booting.flag'):
     sys.exit(0)
 
-port = os.environ.get('LT_PORT', '5000')
+port = os.environ.get('LT_PORT', '5050')
 response = requests.get(
     url=f'http://localhost:{port}/health',
     headers={'Content-Type': 'application/json'},

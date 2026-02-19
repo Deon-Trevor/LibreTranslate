@@ -43,7 +43,7 @@ _default_options_objects = [
     },
     {
         'name': 'PORT',
-        'default_value': 5000,
+        'default_value': 5050,
         'value_type': 'int'
     },
     {

@@ -41,5 +41,5 @@ RUN if [ "$with_models" = "true" ]; then  \
   fi \
   fi
 
-EXPOSE 5000
+EXPOSE 5050
 ENTRYPOINT [ "./scripts/entrypoint.sh" ]
