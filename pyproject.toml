@@ -50,7 +50,7 @@ dependencies = [
     "APScheduler ==3.11.2",
     "argos-translate-files ==1.4.4",
     "itsdangerous ==2.1.2",
-    "Werkzeug ==2.3.8",
+    "Werkzeug ==3.1.9",
     "requests ==2.31.0",
     "redis ==4.4.4",
     "numpy <2;python_version<='3.12'",
