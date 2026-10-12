@@ -51,7 +51,7 @@ dependencies = [
     "argos-translate-files ==1.4.4",
     "itsdangerous ==2.1.2",
     "Werkzeug ==2.3.8",
-    "requests ==2.31.0",
+    "requests ==2.33.0",
     "redis ==4.4.4",
     "numpy <2;python_version<='3.12'",
     "numpy ==2.3.5;python_version>='3.13'",
